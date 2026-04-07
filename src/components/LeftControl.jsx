@@ -9,6 +9,7 @@ export default function LeftControl() {
       </div>
       <div className='flex items-center justify-center'>
         <button className='items-center justify-left w-[25px] h-[25px] border-2 border-solid rounded-[80px]'>{"<"}</button>
+        <div className='items-center justify-right w-[25px] h-[25px]'></div>
         <button className='items-center justify-right w-[25px] h-[25px] border-2 border-solid rounded-[80px]'>{">"}</button>
       </div>
 
