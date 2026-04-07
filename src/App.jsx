@@ -13,7 +13,10 @@ function App() {
   return (
     <>
     <div className='flex'>
-      <h1 className='text-3xl font-bold underline'>NINTENDO</h1>
+      <h1 className='text-3xl bg-green-500 font-bold underline rounded-[10px]'>NINTENDO</h1>
+    </div>
+
+    <div className='flex'>
       <LeftControl />
       <Screen pokemones={data?.results}/>
       <RightControl />
@@ -24,3 +27,4 @@ function App() {
 }
 
 export default App
+
