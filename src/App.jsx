@@ -26,17 +26,21 @@ function App() {
   }, [data]);
 
   return (
-    <div>
-      <div className='flex'>
-      <h1 className='text-3xl font-bold underline '>NINTENDO</h1>
-    </div>
-
-    <div className='flex'>
-      <LeftControl />
-      <Screen pokemones={pokemones}/>
-      <RightControl />
+    <div className='w-[100%] h-[900px]  flex items-center justify-center'>
+      <div>
+        <div className='flex'>
+        <h1 className='text-3xl font-bold underline '>NINTENDO</h1>
       </div>
+
+      <div className='flex'>
+        <LeftControl />
+        <Screen pokemones={pokemones}/>
+        <RightControl />
+        </div>
+      </div>
+
     </div>
+    
     
   );
 }
