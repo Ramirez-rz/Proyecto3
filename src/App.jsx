@@ -12,9 +12,7 @@ function App() {
   const [pokemones, setPokemones] = useState([]);
   const getListPokemones = () => {
     const list = data?.results?.filter((p) => p.url);
-    if(!list) return;
     const plist = list?.map((l) => fetch(l.url).then((res) => res.json()));
-  
     Promise.all(plist).then((values) => {
       console.log('promesa values', values);
       setPokemones(values);
@@ -25,17 +23,28 @@ function App() {
     getListPokemones();
   }, [data]);
 
+  //Handle Direction
+  const[position, setPosition] = useState(0);
+  const handleDirection = (direction) => {
+  console.log(direction);
+
+  if (direction === 'right') {
+    setPosition((prev) => prev + 1);
+  } else if (direction === 'left') {
+    setPosition((prev) => prev - 1);
+  }
+};
+
   return (
     <div className='w-[100%] h-[900px]  flex items-center justify-center'>
       <div>
         <div className='flex'>
-        <h1 className='text-3xl font-bold underline '>NINTENDO</h1>
       </div>
 
       <div className='flex'>
-        <LeftControl />
-        <Screen pokemones={pokemones}/>
-        <RightControl />
+        <LeftControl handleDirection={handleDirection} />
+        <Screen pokemones={pokemones} position={position}/>
+        <RightControl handleDirection={handleDirection} />
         </div>
       </div>
 
@@ -46,28 +55,4 @@ function App() {
 }
 
 export default App;
-
-// function App() {
-//   const url = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0'
-//   const { data, loading, error } = useFetch(url)
-
-//   console.log(data)
-
-//   return (
-//     <>
-//     <div className='flex'>
-//       <h1 className='text-3xl font-bold underline '>NINTENDO</h1>
-//     </div>
-
-//     <div className='flex'>
-//       <LeftControl />
-//       <Screen pokemones={data?.results}/>
-//       <RightControl />
-//     </div>
-//     </>
-
-//   )
-// }
-
-// export default App
 

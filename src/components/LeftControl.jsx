@@ -1,6 +1,5 @@
 import React from 'react'
-
-export default function LeftControl() {
+function LeftControl({handleDirection}) {
   return (
     <div className="w-[100px] h-[250px] border-4 border-solid rounded-l-4xl bg-blue-500 ">
       
@@ -9,19 +8,21 @@ export default function LeftControl() {
         </div>
         
         <div className='flex items-center justify-center'>
-          <button className='w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>^</button>
+          <button onClick={() => handleDirection('up')} className='w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>^</button>
         </div>
         <div className='flex items-center justify-center'>
-          <button className='items-center justify-left w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>{"<"}</button>
+          <button onClick={() => handleDirection('left')} className='items-center justify-left w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>{"<"}</button>
         <div className='items-center w-[25px] h-[25px]'>
         </div>
-          <button className='items-center justify-right w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>{">"}</button>
+          <button onClick={() => handleDirection('right')} className='items-center justify-right w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>{">"}</button>
         </div>
         <div className='flex items-center justify-center'>
-          <button className='w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>v</button>
+          <button onClick={() => handleDirection('down')} className='w-[25px] h-[25px] border-2 border-solid rounded-[80px] bg-black text-white'>v</button>
         </div>
         
     </div> 
   )
 }
+
+export default LeftControl;
     
