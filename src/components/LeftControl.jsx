@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function LeftControl() {
   return (
-    <div className="w-[100px] h-[250px] border-4 border-solid rounded-l-lg bg-blue-500">
+    <div className="w-[100px] h-[250px] border-4 border-solid rounded-l-4xl bg-blue-500 ">
       
         <div className='flex items-center justify-center'>
-          <div className=' w-[50px] h-[50px] border-2 border-solid rounded-[80px]    bg-black'/>
+          <div className=' w-[50px] h-[50px] border-2 border-solid rounded-[80px]  text-white  bg-black'/>
         </div>
         
         <div className='flex items-center justify-center'>
