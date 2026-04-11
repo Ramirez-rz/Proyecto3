@@ -5,6 +5,8 @@ import LeftControl from './components/LeftControl';
 import useFetch from './hooks/useFetch';
 import Screen from './components/screen';
 import GameScreen from './components/Gamerscreen';
+import PokemonDetail from './components/PrevS';
+
 
 function App() {
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0';
@@ -61,6 +63,8 @@ function App() {
     setShowGameScreen(true); 
   };
 
+  const currentPokemon = pokemones.find((p) => p.id === position);
+
   return (
     <div className='w-[100%] h-[900px]  flex items-center justify-center bg-black'>
       <div>
@@ -77,6 +81,9 @@ function App() {
           )}
           <RightControl handleSelection={handleSelection} /> {}
         </div>
+      </div>
+      <div className='w-[90%] h-[500px] flex items-center justify-center bg-black text-white'>
+          <PokemonDetail actual={currentPokemon ? [currentPokemon] : []} />
       </div>
     </div>
     
