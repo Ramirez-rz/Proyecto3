@@ -39,8 +39,8 @@ const PokemonDetail = ({ actual }) => {
                 <p className="capitalize">
                   {item?.move?.name}
                 </p>
-                <p>
-                  Attack: {getRandomInt(50, 151)}
+                <p> 
+                  Attack: {getRandomInt(50, 100)}
                 </p>
               </div>
             ))}

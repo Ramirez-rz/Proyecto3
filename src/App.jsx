@@ -55,13 +55,18 @@ function App() {
     } else if (direction === 'left' && position > 1) { 
       setPosition((prev) => prev - 1);
     }
+
 };
+
+ 
+
   const handleSelection = () => { 
     const selectPokemon = pokemones.find((p) => p.id === position);
     setMyPokeSelection(selectPokemon);
     computerSelection(); 
     setShowGameScreen(true); 
   };
+  
 
   const currentPokemon = pokemones.find((p) => p.id === position);
 
@@ -73,7 +78,8 @@ function App() {
 
         <div className='flex relative'> {}
           <LeftControl handleDirection={handleDirection} />
-          <Screen pokemones={pokemones} position={position}/> 
+          <Screen pokemones={pokemones} position={position}/>
+           
           {showGameScreen && (
             <div className='absolute left-[100px] top-0'>
               <GameScreen myPokeSelection={myPokeSelection} pcPokeSelection={pcPokeSelection} />
@@ -83,7 +89,11 @@ function App() {
         </div>
       </div>
       <div className='w-[90%] h-[500px] flex items-center justify-center bg-black text-white'>
-          <PokemonDetail actual={currentPokemon ? [currentPokemon] : []} />
+          {!showGameScreen && (
+            <div className='w-[90%] h-[500px] flex items-center justify-center bg-black text-white'>
+              <PokemonDetail actual={currentPokemon ? [currentPokemon] : []} />
+            </div>
+)}
       </div>
     </div>
     

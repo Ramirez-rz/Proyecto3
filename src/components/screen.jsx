@@ -2,7 +2,7 @@
 const Screen = ({ pokemones,position }) => {
   return (
     <>
-      <div className="w-[450px] h-[250px] overflow-y-auto border-4 border-solid bg-black">
+      <div className="w-[450px] h-[250px] overflow-y-auto border-4 border-solid border-white bg-black">
         <div className="flex flex-wrap items-center  justify-center">
           {pokemones?.map((pokemon, index) => (
             <div key={index} 
