@@ -21,13 +21,17 @@ const GameScreen = ({ myPokeSelection, pcPokeSelection }) => {
   const [pcHP, setPcHP] = useState(100);
   const [myHP, setmyHP] = useState(100);
 
-  
+  // const playerHp=myHP-randomDm
+  // setmyHP(playerHp)
 
+  
 
   const Healthplayer = (Health) =>{
     console.log(Health);
-    const playerHp=pcHP-Health
-    setPcHP(playerHp);
+    const EnemyHp=pcHP-Health
+    setPcHP(EnemyHp);
+    const playerHp=myHP-randomDm
+    setmyHP(playerHp)
   };
 
   return (
@@ -40,8 +44,10 @@ const GameScreen = ({ myPokeSelection, pcPokeSelection }) => {
             className="w-25 h-25 border-2"
           />
           <p>{myPokeSelection?.name}</p>
-          <div className='w-25 h-5 border-2 bg-green-500 text-white flex items-center justify-around'>
-            <p>100</p>
+          <div className='w-25 h-5 border-2 text-white flex items-center justify-around'>
+            <div className='bg-green-500 h-4 flex items-center justify-around' style={{width: myHP}}>
+              <p>{myHP}</p>
+            </div>
           </div>
         </div>
 
