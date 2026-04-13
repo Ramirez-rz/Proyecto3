@@ -1,5 +1,5 @@
 import React from 'react';
-import {useEffect,useState} from 'react';
+import {useState} from 'react';
 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
@@ -7,36 +7,35 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
-
-
-
 const GameScreen = ({ myPokeSelection, pcPokeSelection }) => {
   const random1=getRandomInt(50,100);
   const random2=getRandomInt(50,100);
   const random3=getRandomInt(50,100);
   const random4=getRandomInt(50,100);
-  const randomDm=getRandomInt(50,100);
 
-   //Health player
   const [pcHP, setPcHP] = useState(100);
   const [myHP, setmyHP] = useState(100);
-
-  // const playerHp=myHP-randomDm
-  // setmyHP(playerHp)
-
-  
+  const [winner, setWinner] = useState('');
 
   const Healthplayer = (Health) =>{
-    console.log(Health);
-    const EnemyHp=pcHP-Health
+    if(winner) return;
+    let EnemyHp=pcHP-Health;
+    let playerHp=myHP-getRandomInt(50,100);
+    if(EnemyHp<0) EnemyHp=0;
+    if(playerHp<0) playerHp=0;
     setPcHP(EnemyHp);
-    const playerHp=myHP-randomDm
-    setmyHP(playerHp)
+    setmyHP(playerHp);
+    if(EnemyHp===0){
+      setWinner(myPokeSelection?.name);
+    }
+    if(playerHp===0){
+      setWinner(pcPokeSelection?.name);
+    }
   };
 
   return (
     <>
-      <div className="w-[450px] h-[250px] border-4 border-solid bg-black text-white flex items-center justify-around">
+      <div className="w-[450px] h-[250px] border-4 border-solid bg-black text-white flex items-center justify-around relative">
         <div className="flex flex-col items-center">
           <img
             src={myPokeSelection?.sprites?.front_default}
@@ -45,7 +44,7 @@ const GameScreen = ({ myPokeSelection, pcPokeSelection }) => {
           />
           <p>{myPokeSelection?.name}</p>
           <div className='w-25 h-5 border-2 text-white flex items-center justify-around'>
-            <div className='bg-green-500 h-4 flex items-center justify-around' style={{width: myHP}}>
+            <div className='bg-green-500 h-4 flex items-center justify-around' style={{width:`${myHP}%`}}>
               <p>{myHP}</p>
             </div>
           </div>
@@ -61,12 +60,11 @@ const GameScreen = ({ myPokeSelection, pcPokeSelection }) => {
           />
           <p>{pcPokeSelection?.name}</p>
           <div className='w-25 h-5 border-2 text-white flex items-center justify-around'>
-            <div className='bg-green-500 h-4 flex items-center justify-around' style={{width: pcHP}}>
+            <div className='bg-green-500 h-4 flex items-center justify-around' style={{width:`${pcHP}%`}}>
               <p>{pcHP}</p>
             </div> 
           </div>
         </div>
-
 
         <div>
           <div className="w-[180px] h-[100%] bg-black text-white flex items-center justify-around text-[14px]">
@@ -76,32 +74,39 @@ const GameScreen = ({ myPokeSelection, pcPokeSelection }) => {
                   {myPokeSelection?.moves?.[0]?.move?.name}
                 </p>
                 <p>Attack: {random1}</p>
-                <button onClick={() => Healthplayer(random1)} className="border border-white">Choose 1</button>
+                <button onClick={()=>Healthplayer(random1)} className="border border-white">Choose 1</button>
               </div>
               <div className="border-2 p-2">
                 <p className="capitalize">
                   {myPokeSelection?.moves?.[1]?.move?.name}
                 </p>
                 <p>Attack: {random2}</p>
-                <button onClick={() => Healthplayer(random2)} className="border border-white">Choose 2</button>
+                <button onClick={()=>Healthplayer(random2)} className="border border-white">Choose 2</button>
               </div>
               <div className="border-2 p-2">
                 <p className="capitalize">
                   {myPokeSelection?.moves?.[2]?.move?.name}
                 </p>
                 <p>Attack: {random3}</p>
-                <button onClick={() => Healthplayer(random3)} className="border border-white">Choose 3</button>
+                <button onClick={()=>Healthplayer(random3)} className="border border-white">Choose 3</button>
               </div>
               <div className="border-2 p-2">
                 <p className="capitalize">
                   {myPokeSelection?.moves?.[3]?.move?.name}
                 </p>
                 <p>Attack: {random4}</p>
-                <button onClick={() => Healthplayer(random4)} className="border border-white">Choose 4</button>
+                <button onClick={()=>Healthplayer(random4)} className="border border-white">Choose 4</button>
               </div>
             </div>
           </div>
         </div>
+
+        {winner&&(
+          <div className="absolute top-0 left-0 w-full h-full bg-black text-yellow flex items-center justify-center">
+            <p class="uppercase">WINNER {winner}</p>
+          </div>
+        )}
+
       </div>
     </>
   );
