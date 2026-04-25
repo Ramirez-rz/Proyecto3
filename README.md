@@ -1,16 +1,32 @@
-# React + Vite
+# Mini juego de batalla Pokémon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Desarrollar una aplicación en React que consuma la API de PokéAPI y simule un mini juego tipo batalla.
 
-Currently, two official plugins are available:
+## Requisitos funcionales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Mostrar una interfaz tipo Nintendo Switch (simulada en UI)
+- Listar Pokémon obtenidos desde la API
+- Permitir seleccionar un Pokémon
+- Al seleccionar:
+  - Cambiar de pantalla (uso de router o manejo de estado)
+  - Iniciar una batalla por turnos
 
-## React Compiler
+## Mecánica del juego
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Sistema de turnos (jugador vs oponente)
+- Cada Pokémon debe tener:
+  - Vida (HP)
+  - Acciones básicas:
+    - Ataque (reduce vida del oponente)
+- Mostrar actualización de vida en cada turno
 
-## Expanding the ESLint configuration
+## Final del juego
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Detectar cuando la vida de un Pokémon llega a 0
+- Mostrar pantalla de ganador
+
+## Entregables
+
+- Repositorio en GitHub
+- Aplicación publicada en Vercel
+- Integración real con la API
